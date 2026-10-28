@@ -15,6 +15,9 @@ ENV/
 .DS_Store
 Thumbs.db
 *.log
+~$*.docx
+~$*.pptx
+*.tmp
 
 # Checkpoints / Large intermediate model weights
 *.incomplete

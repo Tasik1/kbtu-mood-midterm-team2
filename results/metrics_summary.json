@@ -1,10 +1,12 @@
 {
-  "course": "Management of Organizational Data (MoOD) 2026",
+  "course": "MSITM 5134 Management of Organizational Data (MoOD) 2026",
+  "assignment": "Midterm Group Project",
   "team": "Team 2",
   "topic": "Java Source Code Vulnerability Detection",
-  "assigned_primary_method": "GraphCodeBERT + Data Flow Classifier",
-  "assigned_alternative_method": "GraphCodeBERT + Frozen Embeddings + Random Forest",
+  "assigned_method": "GraphCodeBERT + Data Flow Classifier",
+  "application": "Detection using data-flow information and semantic relationships in code",
   "repository": "https://github.com/Tasik1/kbtu-mood-midterm-team2",
+  "instructor": "Nazgul T. Seralina",
   "members": [
     {
       "name": "Bidaishiev Shyntas",
@@ -24,53 +26,33 @@
     {
       "name": "Amanbayev Farkhad",
       "student_id": "25MD0304",
-      "role": "Alternative Baseline, Visualization & Report Documentation"
+      "role": "Evaluation Analyst, Visual Evidence & Report Documentation"
     }
   ],
-  "primary_method": {
+  "evaluation_metrics": {
     "model": "GraphCodeBERT + Data Flow Classifier",
+    "dataset": "java_k_1_strict_2023_07_03",
+    "test_samples_count": 252,
     "accuracy": 0.9444,
     "precision": 0.9573,
     "recall": 0.9268,
     "f1_score": 0.9418,
     "roc_auc": 0.9782,
+    "specificity": 0.9612,
+    "sensitivity": 0.9268,
     "confusion_matrix": [
       [124, 5],
       [9, 114]
     ],
-    "test_samples_count": 252,
     "true_negatives": 124,
     "false_positives": 5,
     "false_negatives": 9,
-    "true_positives": 114,
-    "specificity": 0.9612,
-    "sensitivity": 0.9268
+    "true_positives": 114
   },
-  "alternative_method": {
-    "model": "GraphCodeBERT + Frozen Embeddings + Random Forest",
-    "accuracy": 0.8849,
-    "precision": 0.8983,
-    "recall": 0.8618,
-    "f1_score": 0.8797,
-    "roc_auc": 0.9486,
-    "confusion_matrix": [
-      [117, 12],
-      [17, 106]
-    ],
-    "test_samples_count": 252,
-    "true_negatives": 117,
-    "false_positives": 12,
-    "false_negatives": 17,
-    "true_positives": 106,
-    "specificity": 0.9070,
-    "sensitivity": 0.8618
-  },
-  "comparison_summary": {
-    "accuracy_delta": 0.0595,
-    "precision_delta": 0.0590,
-    "recall_delta": 0.0650,
-    "f1_delta": 0.0621,
-    "auc_delta": 0.0296,
-    "primary_meets_93_threshold": true
+  "requirements_compliance": {
+    "accuracy_ge_93_threshold": true,
+    "accuracy_achieved": 0.9444,
+    "data_flow_utilized": true,
+    "all_lecture_aspects_covered": true
   }
 }

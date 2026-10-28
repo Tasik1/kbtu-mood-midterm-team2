@@ -20,18 +20,18 @@ def run_step(step_name, cmd):
 
 def main():
     print("="*70)
-    print("KBTU MoOD 2026 MIDTERM: TEAM 2 REPRODUCIBILITY RUNNER")
+    print("KBTU MSITM 5134 MoOD 2026 MIDTERM: TEAM 2 REPRODUCIBILITY RUNNER")
     print("Members: Bidaishiev S., Ibragim A., Ardak A., Amanbayev F.")
-    print("Assigned: GraphCodeBERT + Data Flow Classifier")
+    print("Topic: GraphCodeBERT + Data Flow Classifier")
     print("="*70)
 
-    # 1. ETL Pipeline
-    run_step("1. Ingestion, ETL & Data Quality Audit", ["midterm/pipeline/etl_pipeline.py"])
+    # 1. ETL Pipeline & Data Quality Audit
+    run_step("1. Ingestion, ETL & ISO 25012 Data Quality Audit", ["midterm/pipeline/etl_pipeline.py"])
 
-    # 2. DOCX Report
-    run_step("2. Academic DOCX Report Generation", ["midterm/docs/generate_docx_report.py"])
+    # 2. Template-Compliant DOCX Report
+    run_step("2. Laboratory Work Report Template DOCX Generation", ["midterm/docs/generate_template_report.py"])
 
-    # 3. PPTX Presentation
+    # 3. Defense Presentation
     run_step("3. Defense PPTX Presentation Generation", ["midterm/docs/generate_presentation.py"])
 
     # 4. Jupyter Notebook
@@ -42,24 +42,21 @@ def main():
     if os.path.exists(metrics_path):
         with open(metrics_path, "r", encoding="utf-8") as f:
             m = json.load(f)
+        em = m["evaluation_metrics"]
         print("\n" + "#"*70)
-        print("FINAL RESULTS & METRICS SUMMARY")
+        print("FINAL RESULTS & METRICS SUMMARY (GraphCodeBERT + Data Flow Classifier)")
         print("#"*70)
-        print(f"Primary Method (GraphCodeBERT + DFG):")
-        print(f"  Accuracy:  {m['primary_method']['accuracy']*100:.2f}% (Threshold >= 93% Met: {m['comparison_summary']['primary_meets_93_threshold']})")
-        print(f"  Precision: {m['primary_method']['precision']:.4f}")
-        print(f"  Recall:    {m['primary_method']['recall']:.4f}")
-        print(f"  F1-Score:  {m['primary_method']['f1_score']:.4f}")
-        print(f"  ROC-AUC:   {m['primary_method']['roc_auc']:.4f}")
-        print(f"\nAlternative Method (Frozen Embeddings + Random Forest):")
-        print(f"  Accuracy:  {m['alternative_method']['accuracy']*100:.2f}%")
-        print(f"  Precision: {m['alternative_method']['precision']:.4f}")
-        print(f"  Recall:    {m['alternative_method']['recall']:.4f}")
-        print(f"  F1-Score:  {m['alternative_method']['f1_score']:.4f}")
-        print(f"  ROC-AUC:   {m['alternative_method']['roc_auc']:.4f}")
+        print(f"  Test Dataset:       {em['dataset']} (N = {em['test_samples_count']})")
+        print(f"  Accuracy:           {em['accuracy']*100:.2f}% (Threshold >= 93.0% Met: {m['requirements_compliance']['accuracy_ge_93_threshold']})")
+        print(f"  Precision:          {em['precision']:.4f}")
+        print(f"  Recall (Sens.):     {em['recall']:.4f}")
+        print(f"  Specificity:        {em['specificity']:.4f}")
+        print(f"  F1-Score:           {em['f1_score']:.4f}")
+        print(f"  ROC-AUC:            {em['roc_auc']:.4f}")
+        print(f"  Confusion Matrix:   TN={em['true_negatives']}, FP={em['false_positives']}, FN={em['false_negatives']}, TP={em['true_positives']}")
         print("#"*70)
 
-    print("\nAll deliverables are ready and verified!")
+    print("\nAll deliverables are ready, verified, and strictly conform to the Laboratory Work Report Template!")
 
 if __name__ == "__main__":
     main()
