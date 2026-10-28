@@ -1,0 +1,22 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Temporary / OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Checkpoints / Large intermediate model weights
+*.incomplete
+midterm/models/best_graphcodebert_dfg.pt
+midterm/models/graphcodebert_dfg_model.pt

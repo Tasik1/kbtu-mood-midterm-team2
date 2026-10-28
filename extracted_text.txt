@@ -1,0 +1,99 @@
+MIDTERM GROUP PROJECT 2026
+Management of Organizational Data | Master’s Programme | 10 Groups / 37 Students
+Project theme: Java Source Code Vulnerability Detection
+Each group 3 or 4 Master Students 
+Tools: Python
+Project objective: 
+The project demonstrates how effective organizational data management supports the development of reliable AI-based systems. Vulnerability detection serves as a practical application in which Master students must manage the complete data lifecycle, ensure data quality and security, design data processing pipelines, and transform analytical results into informed decisions.
+The comparison of primary and alternative AI methods also develops students' ability to evaluate technological solutions based on organizational requirements, available resources, data characteristics, computational efficiency, and implementation risks.
+Therefore, the main learning objective is not only to achieve high classification accuracy but also to demonstrate how data governance, data quality, integration, security, and analytics contribute to effective organizational decision-making.
+Students must demonstrate how organizational data management principles influence the development, reliability, security, and effectiveness of intelligent software systems.
+Each group must address the following aspects:
+Lecture 1 — Organizational Data Management: Describe the dataset lifecycle, from collection and storage to processing, analysis, and decision-making.
+Lecture 2 — Data Governance: Define data ownership, access responsibilities, data usage policies, and ethical considerations.
+Lecture 3 — Data Modeling: Develop a conceptual data model or ER diagram describing the dataset, Java functions, vulnerability labels, and experimental results.
+Lecture 4 — Data Warehousing and ETL: Demonstrate data extraction, transformation, loading, and integration into the transformer or machine learning workflow.
+Lecture 5 — Data Quality: Perform data cleaning, duplicate detection, preprocessing, class distribution analysis, and data quality assessment.
+Lecture 6 — Data Security: Explain secure data storage, access control, confidentiality, and risks associated with organizational data.
+Lecture 7 — Data Analytics and Visualization: Evaluate model performance using Accuracy, Precision, Recall, F1-score, ROC-AUC, and Confusion Matrix. Visualize the results and provide data-driven recommendations.
+1. Group Assignments
+Group
+Method / Algorithm
+Alternative method 
+Application
+1
+CodeBERT + Classification Head
+CodeBERT + Frozen Embeddings + MLP
+Contextual analysis of Java source code to detect potential vulnerabilities.
+2
+GraphCodeBERT + Data Flow Classifier
+GraphCodeBERT + Frozen Embeddings + Random Forest
+Detection using data-flow information and semantic relationships in code.
+3
+CodeT5 + Classification Head
+CodeT5-small + Classification Head
+Binary vulnerability classification with an encoder–decoder Transformer.
+4
+UniXcoder + Classification Head
+UniXcoder + Frozen Embeddings + SVM
+Semantic and structural analysis of source code.
+5
+PLBART + Classification Head
+PLBART + Frozen Embeddings + Logistic Regression
+Vulnerability detection using a pretrained encoder–decoder architecture.
+6
+CodeBERT + LoRA Fine-Tuning
+DistilBERT + Classification Head
+Parameter-efficient adaptation of a code language model for binary classification.
+7
+CodeT5-small + Fine-Tuning
+MiniLM + Classification Head
+Vulnerability detection using quantized LLM adaptation.
+8
+CodeBERT + LoRA
+CodeBERT + LoRA Fine-Tuning
+Adaptation of a specialized code LLM for Java-function classification.
+9
+CodeBERT + Class-Weighted Cross-Entropy
+CodeBERT + Class-Weighted Loss
+Study and partial reproduction of the approach described in the reference article.
+10
+CodeBERT + Focal Loss + Attention-Based Classification
+CodeBERT + Focal Loss
+Improved identification of rare vulnerabilities in imbalanced datasets.
+If the primary method cannot be successfully implemented or tested due to technical limitations, such as insufficient computational resources, GPU memory limitations, software compatibility issues, or other justified technical difficulties, the group may use the method specified in the "Alternative Method" column.
+However, switching to an alternative method must be supported by documented evidence.
+Students must provide:
+A description of the original method and implementation steps.
+An explanation of the technical problems encountered.
+Screenshots of errors, execution logs, or other relevant evidence.
+A justification for selecting the alternative method.
+Experimental results obtained using the alternative method.
+2. Common Technical Requirements (All Groups)
+Organizational Data Management Draw a data lifecycle (acquisition → validation → storage → transformation → training → evaluation → retention/deletion); explain the information value chain and map relevant DAMA-DMBOK / ISO-aligned principles.
+Use datasets from https://github.com/rmusab/vul-llm-finetune/tree/main/Datasets
+Dataset collection, cleaning, preprocessing.
+Implementation and testing of the assigned AI model or its approved alternative.
+Evaluation using Accuracy>=93%, Precision, Recall, F1-score, ROC-AUC, and Confusion Matrix.
+Preparation of a system architecture diagram 
+Submission of runnable Python code, a Jupyter Notebook, a short technical report, and a presentation.
+5. Required Submission Package
+Source code (.py / .ipynb), reproducible environment file and README with run instructions.
+Training logs, model configuration, evaluation metrics and visual evidence.
+Technical report with methodology, results, limitations and references.
+Presentation and live demonstration; each student explains their contribution.
+6. Evaluation Rubric (100 Points)
+Criterion
+Points
+Working AI method implementation and reproducibility
+5
+Experimental design and evaluation,
+5
+visualization and strategic interpretation 
+Technical report, presentation and individual defense
+5
+TOTAL
+15
+Defense: 10 minutes per group, including individual questions..
+7. Scientific and Practical Notes
+Reference study: Shestov et al., “Finetuning Large Language Models for Vulnerability Detection,” IEEE Access (2025), DOI: 10.1109/ACCESS.2025.3546700. The paper evaluates Java vulnerability classification, class imbalance, LoRA and efficient training. s

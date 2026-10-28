@@ -1,0 +1,97 @@
+{
+  "splits": {
+    "train": {
+      "raw_count": 810,
+      "cleaned_count": 810,
+      "duplicates_removed": 0,
+      "completeness_score": 1.0,
+      "validity_score": 1.0,
+      "uniqueness_score": 1.0,
+      "class_distribution": {
+        "0_non_vulnerable": 407,
+        "1_vulnerable": 403
+      },
+      "vulnerability_rate": 0.4975,
+      "top_cwes": {
+        "NVD-CWE-noinfo": 84,
+        "CWE-611": 63,
+        "CWE-79": 62,
+        "CWE-20": 58,
+        "CWE-264": 42,
+        "CWE-22": 39,
+        "CWE-352": 32,
+        "NVD-CWE-Other": 30,
+        "CWE-200": 30,
+        "CWE-502": 28
+      },
+      "avg_token_count": 161.99,
+      "max_token_count": 1534,
+      "min_token_count": 7
+    },
+    "valid": {
+      "raw_count": 272,
+      "cleaned_count": 272,
+      "duplicates_removed": 0,
+      "completeness_score": 1.0,
+      "validity_score": 1.0,
+      "uniqueness_score": 1.0,
+      "class_distribution": {
+        "0_non_vulnerable": 133,
+        "1_vulnerable": 139
+      },
+      "vulnerability_rate": 0.511,
+      "top_cwes": {
+        "CWE-20": 21,
+        "NVD-CWE-noinfo": 21,
+        "CWE-22": 20,
+        "CWE-264": 16,
+        "NVD-CWE-Other": 16,
+        "CWE-611": 16,
+        "CWE-200": 14,
+        "CWE-287": 12,
+        "CWE-400": 10,
+        "CWE-79": 10
+      },
+      "avg_token_count": 159.05,
+      "max_token_count": 1896,
+      "min_token_count": 8
+    },
+    "test": {
+      "raw_count": 252,
+      "cleaned_count": 252,
+      "duplicates_removed": 0,
+      "completeness_score": 1.0,
+      "validity_score": 1.0,
+      "uniqueness_score": 1.0,
+      "class_distribution": {
+        "0_non_vulnerable": 129,
+        "1_vulnerable": 123
+      },
+      "vulnerability_rate": 0.4881,
+      "top_cwes": {
+        "CWE-79": 36,
+        "CWE-611": 23,
+        "CWE-20": 22,
+        "NVD-CWE-noinfo": 19,
+        "CWE-22": 13,
+        "CWE-264": 10,
+        "CWE-502": 9,
+        "CWE-94": 8,
+        "CWE-200": 8,
+        "CWE-863": 8
+      },
+      "avg_token_count": 152.4,
+      "max_token_count": 1149,
+      "min_token_count": 7
+    }
+  },
+  "overall": {
+    "total_raw_records": 1334,
+    "total_cleaned_records": 1334,
+    "duplicates_removed": 0,
+    "overall_completeness": 1.0,
+    "overall_validity": 1.0,
+    "class_balance_ratio": {},
+    "overall_vulnerability_rate": 0.4985
+  }
+}
