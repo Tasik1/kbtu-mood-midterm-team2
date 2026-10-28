@@ -123,12 +123,9 @@ kbtu-mood-midterm-team2/
 │   └── metrics_barchart.png               # Task 7: Evaluation metrics comparison chart
 ├── docs/
 │   ├── Midterm_Report_Team2_Final.docx    # Official Midterm Report (Lab 5 Structure & Style)
-│   ├── Midterm_Presentation_Team2.pptx     # Master's Defense Slide Deck (PowerPoint)
-│   ├── generate_template_report.py        # Automated DOCX report generator
-│   └── generate_presentation.py           # Automated PPTX presentation generator
+│   └── Midterm_Presentation_Team2.pptx    # Master's Defense Slide Deck (PowerPoint)
 ├── notebooks/
-│   ├── midterm_team2_graphcodebert.ipynb  # End-to-end runnable Jupyter Notebook
-│   └── generate_notebook.py               # Notebook generator script
+│   └── midterm_team2_graphcodebert.ipynb  # End-to-end runnable Jupyter Notebook
 ├── requirements.txt                       # Reproducible Python dependencies
 ├── run_all.py                             # One-click master reproducibility script
 └── README.md                              # Main documentation and guide
@@ -156,7 +153,7 @@ pip install -r requirements.txt
 ```
 
 ### 3. Run the Complete End-to-End Pipeline
-Execute the master one-click runner to run ETL, generate reports, slides, and notebook:
+Execute the master one-click runner to run ETL, generate visualization evidence, verify all deliverables, and build the submission package:
 ```bash
 python run_all.py
 ```

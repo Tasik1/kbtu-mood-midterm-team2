@@ -18,9 +18,14 @@ def get_file_sha256(filepath):
     return h.hexdigest()
 
 def build_package(
-    source_dir: str = "midterm",
-    output_zip_path: str = "Team2_Required_Submission_Package.zip"
+    source_dir: str = None,
+    output_zip_path: str = None
 ):
+    if source_dir is None:
+        source_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    if output_zip_path is None:
+        output_zip_path = os.path.join(source_dir, "Team2_Required_Submission_Package.zip")
+
     print("="*70)
     print("BUILDING REQUIRED SUBMISSION PACKAGE (TEAM 2)")
     print(f"Source Directory: {source_dir}")
@@ -50,11 +55,8 @@ def build_package(
         # Documentation
         "docs/Midterm_Report_Team2_Final.docx",
         "docs/Midterm_Presentation_Team2.pptx",
-        "docs/generate_template_report.py",
-        "docs/generate_presentation.py",
         # Notebooks
         "notebooks/midterm_team2_graphcodebert.ipynb",
-        "notebooks/generate_notebook.py",
         # Pipeline
         "pipeline/etl_pipeline.py",
         "pipeline/train_eval.py",

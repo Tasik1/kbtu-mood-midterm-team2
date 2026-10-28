@@ -17,9 +17,10 @@ from collections import Counter
 from typing import Dict, List, Tuple, Any
 
 class JavaVulnerabilityETL:
-    def __init__(self, raw_dir: str = "midterm/data/extracted", processed_dir: str = "midterm/data/processed"):
-        self.raw_dir = raw_dir
-        self.processed_dir = processed_dir
+    def __init__(self, raw_dir: str = None, processed_dir: str = None):
+        self.repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        self.raw_dir = raw_dir or os.path.join(self.repo_root, "data", "extracted")
+        self.processed_dir = processed_dir or os.path.join(self.repo_root, "data", "processed")
         os.makedirs(self.processed_dir, exist_ok=True)
         self.quality_metrics: Dict[str, Any] = {}
 
@@ -173,7 +174,7 @@ class JavaVulnerabilityETL:
         total_vuln = sum(summary["splits"][s]["class_distribution"]["1_vulnerable"] for s in splits)
         summary["overall"]["overall_vulnerability_rate"] = round(total_vuln / max(1, total_clean), 4)
 
-        report_path = "midterm/results/data_quality_report.json"
+        report_path = os.path.join(self.repo_root, "results", "data_quality_report.json")
         with open(report_path, "w", encoding="utf-8") as rf:
             json.dump(summary, rf, indent=2)
 

@@ -10,6 +10,8 @@ import subprocess
 import time
 import json
 
+REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 def run_step(step_name, cmd):
     print("\n" + "="*70)
     print(f"STEP: {step_name}")
@@ -17,6 +19,13 @@ def run_step(step_name, cmd):
     t0 = time.time()
     res = subprocess.run([sys.executable] + cmd, check=True)
     print(f"Completed '{step_name}' in {time.time() - t0:.2f}s")
+
+def verify_file_exists(rel_path, description):
+    full_path = os.path.join(REPO_ROOT, rel_path)
+    if not os.path.exists(full_path):
+        raise FileNotFoundError(f"Missing required deliverable: {description} at {full_path}")
+    size_kb = os.path.getsize(full_path) / 1024
+    print(f"  [Verified] {description} ({rel_path}) - {size_kb:.1f} KB")
 
 def main():
     print("="*70)
@@ -26,25 +35,27 @@ def main():
     print("="*70)
 
     # 1. ETL Pipeline & Data Quality Audit
-    run_step("1. Ingestion, ETL & ISO 25012 Data Quality Audit", ["midterm/pipeline/etl_pipeline.py"])
+    etl_script = os.path.join(REPO_ROOT, "pipeline", "etl_pipeline.py")
+    run_step("1. Ingestion, ETL & ISO 25012 Data Quality Audit", [etl_script])
 
     # 2. Visualizations and Evidence Generation
-    run_step("2. Publication-Quality Visualizations & Technical Problem Evidence", ["midterm/pipeline/train_eval.py"])
+    train_eval_script = os.path.join(REPO_ROOT, "pipeline", "train_eval.py")
+    run_step("2. Publication-Quality Visualizations & Technical Problem Evidence", [train_eval_script])
 
-    # 3. Template-Compliant DOCX Report
-    run_step("3. Laboratory Work Report Template DOCX Generation", ["midterm/docs/generate_template_report.py"])
+    # 3. Verify Deliverables Integrity
+    print("\n" + "="*70)
+    print("STEP: 3. Verify Deliverables Integrity")
+    print("="*70)
+    verify_file_exists("docs/Midterm_Report_Team2_Final.docx", "Final Midterm Technical Report DOCX")
+    verify_file_exists("docs/Midterm_Presentation_Team2.pptx", "Defense Presentation Slides PPTX")
+    verify_file_exists("notebooks/midterm_team2_graphcodebert.ipynb", "Interactive Jupyter Notebook")
 
-    # 4. Defense Presentation
-    run_step("4. Defense PPTX Presentation Generation", ["midterm/docs/generate_presentation.py"])
-
-    # 5. Jupyter Notebook
-    run_step("5. Interactive Jupyter Notebook Generation", ["midterm/notebooks/generate_notebook.py"])
-
-    # 6. Build Required Submission Package ZIP
-    run_step("6. Build Required Submission Package ZIP", ["midterm/pipeline/build_submission_package.py"])
+    # 4. Build Required Submission Package ZIP
+    build_pkg_script = os.path.join(REPO_ROOT, "pipeline", "build_submission_package.py")
+    run_step("4. Build Required Submission Package ZIP", [build_pkg_script])
 
     # Summary
-    metrics_path = "midterm/results/metrics_summary.json"
+    metrics_path = os.path.join(REPO_ROOT, "results", "metrics_summary.json")
     if os.path.exists(metrics_path):
         with open(metrics_path, "r", encoding="utf-8") as f:
             m = json.load(f)

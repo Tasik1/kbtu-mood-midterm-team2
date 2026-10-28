@@ -109,8 +109,14 @@ class JavaVulnerabilityDataset(Dataset):
 
 def generate_visualizations(
     metrics: Dict[str, Any],
-    output_dir: str = "midterm/results"
+    output_dir: str = None
 ):
+    if output_dir is None:
+        repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        output_dir = os.path.join(repo_root, "results")
+    elif not os.path.isabs(output_dir) and not os.path.exists(output_dir):
+        repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        output_dir = os.path.join(repo_root, os.path.basename(output_dir))
     os.makedirs(output_dir, exist_ok=True)
     sns.set_theme(style="whitegrid")
     import matplotlib.patches as patches
@@ -677,7 +683,8 @@ def generate_technical_problem_screenshots(output_dir: str):
 
 if __name__ == "__main__":
     import json
-    metrics_path = "midterm/results/metrics_summary.json"
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    metrics_path = os.path.join(repo_root, "results", "metrics_summary.json")
     if os.path.exists(metrics_path):
         with open(metrics_path, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -696,5 +703,5 @@ if __name__ == "__main__":
             "roc_auc": 0.9782
         }
     print("[Visualization] Generating updated publication-grade figures and evidence...")
-    generate_visualizations(metrics, output_dir="midterm/results")
+    generate_visualizations(metrics, output_dir=os.path.join(repo_root, "results"))
     print("[Visualization] All figures and evidence successfully generated!")
