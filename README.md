@@ -110,18 +110,19 @@ kbtu-mood-midterm-team2/
 ├── results/
 │   ├── metrics_summary.json               # Complete evaluation metrics in JSON
 │   ├── data_quality_report.json           # ISO 25012 quality audit metrics
-│   ├── architecture_diagram.png           # System architecture diagram
-│   ├── data_lifecycle_diagram.png         # Organizational lifecycle flowchart
-│   ├── confusion_matrix.png               # Test set confusion matrix
-│   ├── roc_curve.png                      # Receiver Operating Characteristic curve
-│   ├── metrics_barchart.png               # Evaluation metrics comparison chart
-│   ├── screenshot_error_git_network.png   # Technical Problem 1: DNS / TCP 443 evidence
-│   ├── screenshot_error_cuda_oom.png      # Technical Problem 2: 4GB GPU VRAM OOM evidence
-│   └── screenshot_git_push.png            # Deployment verification evidence
+│   ├── data_lifecycle_diagram.png         # Task 1: Organizational lifecycle flowchart
+│   ├── data_governance_framework.png      # Task 2: 4-tier RBAC and governance architecture
+│   ├── conceptual_er_diagram.png          # Task 3: 3NF relational data model & ER diagram
+│   ├── architecture_diagram.png           # Task 4: System architecture diagram
+│   ├── data_quality_cwe_distribution.png  # Task 5: ISO 25012 quality audit & CWE distribution
+│   ├── screenshot_error_git_network.png   # Task 6: Technical Problem 1 DNS/TCP 443 evidence
+│   ├── screenshot_error_cuda_oom.png      # Task 6: Technical Problem 2 4GB GPU VRAM OOM evidence
+│   ├── screenshot_git_push.png            # Task 6: Deployment verification evidence
+│   ├── confusion_matrix.png               # Task 7: Test set confusion matrix
+│   ├── roc_curve.png                      # Task 7: Receiver Operating Characteristic curve
+│   └── metrics_barchart.png               # Task 7: Evaluation metrics comparison chart
 ├── docs/
-│   ├── Midterm_Report_Team2_Final.docx    # Laboratory Work Report Template DOCX
-│   ├── Midterm_Report_Team2.docx          # Academic Technical Report (Word)
-│   ├── Midterm_Report_Team2.md            # Technical Report (Markdown)
+│   ├── Midterm_Report_Team2_Final.docx    # Official Midterm Report (Lab 5 Structure & Style)
 │   ├── Midterm_Presentation_Team2.pptx     # Master's Defense Slide Deck (PowerPoint)
 │   ├── generate_template_report.py        # Automated DOCX report generator
 │   └── generate_presentation.py           # Automated PPTX presentation generator

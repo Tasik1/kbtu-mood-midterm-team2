@@ -25,9 +25,7 @@
    - `run_all.py`: Master one-click verification script.
 
 2. **Technical Report**:
-   - `docs/Midterm_Report_Team2_Final.docx`: Word report formatted strictly per Laboratory Work Report Template.
-   - `docs/Midterm_Report_Team2.docx`: Word report copy.
-   - `docs/Midterm_Report_Team2.md`: Full Markdown technical report.
+   - `docs/Midterm_Report_Team2_Final.docx`: Word report formatted strictly per Laboratory Work Report Template and Lab 5 structure.
    - Covers all 7 lecture topics, methodology, problems encountered, screenshots, results, and references.
 
 3. **Presentation & Defense**:

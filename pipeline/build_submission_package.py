@@ -49,10 +49,7 @@ def build_package(
         "MoOD_10_Groups_Midterm_2026.docx",
         # Documentation
         "docs/Midterm_Report_Team2_Final.docx",
-        "docs/Midterm_Report_Team2.docx",
-        "docs/Midterm_Report_Team2.md",
         "docs/Midterm_Presentation_Team2.pptx",
-        "docs/Laboratory Work Report Template.docx",
         "docs/generate_template_report.py",
         "docs/generate_presentation.py",
         # Notebooks
@@ -71,6 +68,9 @@ def build_package(
         "results/data_quality_report.json",
         "results/architecture_diagram.png",
         "results/data_lifecycle_diagram.png",
+        "results/data_governance_framework.png",
+        "results/conceptual_er_diagram.png",
+        "results/data_quality_cwe_distribution.png",
         "results/confusion_matrix.png",
         "results/roc_curve.png",
         "results/metrics_barchart.png",
@@ -112,9 +112,7 @@ def build_package(
    - `run_all.py`: Master one-click verification script.
 
 2. **Technical Report**:
-   - `docs/Midterm_Report_Team2_Final.docx`: Word report formatted strictly per Laboratory Work Report Template.
-   - `docs/Midterm_Report_Team2.docx`: Word report copy.
-   - `docs/Midterm_Report_Team2.md`: Full Markdown technical report.
+   - `docs/Midterm_Report_Team2_Final.docx`: Word report formatted strictly per Laboratory Work Report Template and Lab 5 structure.
    - Covers all 7 lecture topics, methodology, problems encountered, screenshots, results, and references.
 
 3. **Presentation & Defense**:
