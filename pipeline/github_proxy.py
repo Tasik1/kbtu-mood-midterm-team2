@@ -15,10 +15,10 @@ ROUTING = {
 def forward_stream(src, dst):
     try:
         while True:
-            r, _, _ = select.select([src], [], [], 20)
+            r, _, _ = select.select([src], [], [], 180)
             if not r:
                 break
-            data = src.recv(16384)
+            data = src.recv(32768)
             if not data:
                 break
             dst.sendall(data)

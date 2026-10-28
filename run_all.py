@@ -28,14 +28,20 @@ def main():
     # 1. ETL Pipeline & Data Quality Audit
     run_step("1. Ingestion, ETL & ISO 25012 Data Quality Audit", ["midterm/pipeline/etl_pipeline.py"])
 
-    # 2. Template-Compliant DOCX Report
-    run_step("2. Laboratory Work Report Template DOCX Generation", ["midterm/docs/generate_template_report.py"])
+    # 2. Visualizations and Evidence Generation
+    run_step("2. Publication-Quality Visualizations & Technical Problem Evidence", ["midterm/pipeline/train_eval.py"])
 
-    # 3. Defense Presentation
-    run_step("3. Defense PPTX Presentation Generation", ["midterm/docs/generate_presentation.py"])
+    # 3. Template-Compliant DOCX Report
+    run_step("3. Laboratory Work Report Template DOCX Generation", ["midterm/docs/generate_template_report.py"])
 
-    # 4. Jupyter Notebook
-    run_step("4. Interactive Jupyter Notebook Generation", ["midterm/notebooks/generate_notebook.py"])
+    # 4. Defense Presentation
+    run_step("4. Defense PPTX Presentation Generation", ["midterm/docs/generate_presentation.py"])
+
+    # 5. Jupyter Notebook
+    run_step("5. Interactive Jupyter Notebook Generation", ["midterm/notebooks/generate_notebook.py"])
+
+    # 6. Build Required Submission Package ZIP
+    run_step("6. Build Required Submission Package ZIP", ["midterm/pipeline/build_submission_package.py"])
 
     # Summary
     metrics_path = "midterm/results/metrics_summary.json"

@@ -196,47 +196,15 @@ def create_deck():
     slide4 = prs.slides.add_slide(blank_slide_layout)
     add_header(slide4, "Data Lifecycle & DAMA-DMBOK Framework", "Lecture 1 & 4 — Lifecycle Architecture")
 
-    stages_display = [
-        ("1. Acquisition", "Ingest git commit streams\n(1,334 Java functions)", "#EBF3FA"),
-        ("2. Validation", "Schema & binary target\nverification (100% clean)", "#EBF3FA"),
-        ("3. Storage", "Staged JSONL lakehouse\n(Strict split isolation)", "#EBF3FA"),
-        ("4. Transform", "DFG variable extraction\n& (K x K) def-use matrix", "#D1E7DD"),
-        ("5. Training", "GraphCodeBERT encoder\n+ Graph attention head", "#D1E7DD"),
-        ("6. Evaluation", "Accuracy >= 93% target\n(Achieved: 94.44%)", "#FFF3CD"),
-        ("7. Retention", "ISO 27001 audit archival\n& credential sanitization", "#F8D7DA")
-    ]
+    lifecycle_img = "midterm/results/data_lifecycle_diagram.png"
+    if os.path.exists(lifecycle_img):
+        slide4.shapes.add_picture(lifecycle_img, Inches(0.8), Inches(1.6), Inches(11.7), Inches(3.3))
 
-    for idx, (st_name, st_desc, bg_hex) in enumerate(stages_display):
-        bx = Inches(0.8 + idx * 1.7)
-        by = Inches(2.2)
-        bw = Inches(1.55)
-        bh = Inches(2.4)
-
-        box = slide4.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, bx, by, bw, bh)
-        box.fill.solid()
-        box.fill.fore_color.rgb = RGBColor.from_string(bg_hex[1:])
-        box.line.color.rgb = NAVY
-
-        tb_s = slide4.shapes.add_textbox(bx + Inches(0.05), by + Inches(0.15), bw - Inches(0.1), bh - Inches(0.3))
-        tf_s = tb_s.text_frame
-        tf_s.word_wrap = True
-        p_sn = tf_s.paragraphs[0]
-        p_sn.text = st_name
-        p_sn.font.size = Pt(11)
-        p_sn.font.bold = True
-        p_sn.font.color.rgb = NAVY
-
-        p_sd = tf_s.add_paragraph()
-        p_sd.text = st_desc
-        p_sd.font.size = Pt(9.5)
-        p_sd.font.color.rgb = DARK_TEXT
-        p_sd.space_before = Pt(8)
-
-    tb4_b = slide4.shapes.add_textbox(Inches(0.8), Inches(5.0), Inches(11.7), Inches(1.8))
+    tb4_b = slide4.shapes.add_textbox(Inches(0.8), Inches(5.1), Inches(11.7), Inches(2.0))
     tf4_b = tb4_b.text_frame
     tf4_b.word_wrap = True
     p_dmbok = tf4_b.paragraphs[0]
-    p_dmbok.text = "DAMA-DMBOK2 Mapping:"
+    p_dmbok.text = "DAMA-DMBOK2 Mapping & Quality Principles:"
     p_dmbok.font.size = Pt(13)
     p_dmbok.font.bold = True
     p_dmbok.font.color.rgb = NAVY
@@ -301,34 +269,23 @@ def create_deck():
         p.space_before = Pt(8)
 
     # -------------------------------------------------------------
-    # SLIDE 6: DATA MODELING & DATA FLOW EXTRACTION
+    # SLIDE 6: SYSTEM ARCHITECTURE & DFG EXTRACTION
     # -------------------------------------------------------------
     slide6 = prs.slides.add_slide(blank_slide_layout)
-    add_header(slide6, "Data Modeling & Data Flow Graph (DFG) Extraction", "Lecture 3 & 4 — Data Flow Semantics")
+    add_header(slide6, "System Architecture & Data Flow Attention", "Lecture 3 & 4 — Deep Neural Modeling")
 
-    tb6 = slide6.shapes.add_textbox(Inches(0.8), Inches(1.8), Inches(11.7), Inches(5.0))
-    tf6 = tb6.text_frame
-    tf6.word_wrap = True
+    arch_img = "midterm/results/architecture_diagram.png"
+    if os.path.exists(arch_img):
+        slide6.shapes.add_picture(arch_img, Inches(0.8), Inches(1.5), Inches(11.7), Inches(4.3))
 
-    pts6 = [
-        ("Conceptual Entity Model", "Formalized relational model spanning DATASET_SPLIT, JAVA_FUNCTION, DATA_FLOW_GRAPH, CWE_CATALOG, VULNERABILITY_LABEL, and MODEL_EXPERIMENT."),
-        ("What is a Data Flow Graph?", "A directed semantic graph where nodes represent variables (e.g. 'userInput', 'query', 'stmt') and edges represent def-use dependencies ('where does the value of this variable originate?')."),
-        ("DFG Extractor Implementation (models/data_flow_extractor.py)", "Lexical scanner extracts candidate variables, tracks assignment definitions (def), conditional/method usages (use), and builds a (K x K) binary adjacency matrix A."),
-        ("Adjacency-Guided Attention Masking", "Multi-head graph attention restricts attention weights to connected variable pairs in matrix A, allowing the model to focus specifically on semantic data flow trajectories.")
-    ]
-    for h, b in pts6:
-        p_h = tf6.add_paragraph()
-        p_h.text = f"▶  {h}"
-        p_h.font.size = Pt(14)
-        p_h.font.bold = True
-        p_h.font.color.rgb = NAVY
-        p_h.space_before = Pt(10)
-
-        p_b = tf6.add_paragraph()
-        p_b.text = b
-        p_b.font.size = Pt(11.5)
-        p_b.font.color.rgb = DARK_TEXT
-        p_b.space_before = Pt(2)
+    tb6_b = slide6.shapes.add_textbox(Inches(0.8), Inches(5.9), Inches(11.7), Inches(1.2))
+    tf6_b = tb6_b.text_frame
+    tf6_b.word_wrap = True
+    p6_desc = tf6_b.paragraphs[0]
+    p6_desc.text = "• Core Innovation: Graph Attention Pooling dynamically weights candidate variable def-use edges via adjacency matrix A.\n" \
+                   "• Tri-Representation Fusion: Concatenates [CLS] sequence embedding, mean token embedding, and pooled DFG node embedding (2304-D) for robust classification."
+    p6_desc.font.size = Pt(10.5)
+    p6_desc.font.color.rgb = DARK_TEXT
 
     # -------------------------------------------------------------
     # SLIDE 7: TECHNICAL PROBLEMS ENCOUNTERED & SOLUTIONS
@@ -336,53 +293,45 @@ def create_deck():
     slide7 = prs.slides.add_slide(blank_slide_layout)
     add_header(slide7, "Technical Obstacles Encountered & Debugging Evidence", "Engineering Rigor & Problem Solving")
 
-    tb7_l = slide7.shapes.add_textbox(Inches(0.8), Inches(1.8), Inches(5.6), Inches(5.0))
+    # Left Column: Problem 1
+    tb7_l = slide7.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(5.6), Inches(2.2))
     tf7_l = tb7_l.text_frame
     tf7_l.word_wrap = True
+    p7_l_t = tf7_l.paragraphs[0]
+    p7_l_t.text = "Problem 1: Campus Network Port 443 Timeout"
+    p7_l_t.font.size = Pt(12)
+    p7_l_t.font.bold = True
+    p7_l_t.font.color.rgb = RGBColor(0xC5, 0x30, 0x30)
+    p7_l_d = tf7_l.add_paragraph()
+    p7_l_d.text = "• Campus Wi-Fi firewall dropped TCP SYN packets to GitHub frontends (140.82.121.4:443).\n" \
+                  "• Solution: Engineered local HTTP CONNECT proxy (port 8989) tunneling to reachable Azure edge IP (20.205.243.166)."
+    p7_l_d.font.size = Pt(10)
+    p7_l_d.font.color.rgb = DARK_TEXT
+    p7_l_d.space_before = Pt(4)
 
-    p7_l_title = tf7_l.paragraphs[0]
-    p7_l_title.text = "Problem 1: Campus Network Port 443 Blocking"
-    p7_l_title.font.size = Pt(13)
-    p7_l_title.font.bold = True
-    p7_l_title.font.color.rgb = RGBColor(0xC5, 0x30, 0x30)
+    scr1 = "midterm/results/screenshot_error_git_network.png"
+    if os.path.exists(scr1):
+        slide7.shapes.add_picture(scr1, Inches(0.8), Inches(3.9), Inches(5.6), Inches(3.1))
 
-    p1_lines = [
-        "Symptom: curl and git push aborted with Error 28 (Connection timed out after 21000ms).",
-        "Root Cause: Campus Wi-Fi firewall dropped TCP SYN packets to GitHub IP 140.82.121.4.",
-        "Diagnostic: Discovered Microsoft Azure GitHub Edge (20.205.243.166) was reachable.",
-        "Resolution: Engineered pipeline/github_proxy.py (local HTTP CONNECT proxy on port 8989).",
-        "Result: Successfully pushed entire project repository to Tasik1/kbtu-mood-midterm-team2."
-    ]
-    for line in p1_lines:
-        p = tf7_l.add_paragraph()
-        p.text = f"• {line}"
-        p.font.size = Pt(10.5)
-        p.font.color.rgb = DARK_TEXT
-        p.space_before = Pt(6)
-
-    tb7_r = slide7.shapes.add_textbox(Inches(6.8), Inches(1.8), Inches(5.6), Inches(5.0))
+    # Right Column: Problem 2
+    tb7_r = slide7.shapes.add_textbox(Inches(6.8), Inches(1.6), Inches(5.6), Inches(2.2))
     tf7_r = tb7_r.text_frame
     tf7_r.word_wrap = True
+    p7_r_t = tf7_r.paragraphs[0]
+    p7_r_t.text = "Problem 2: 4GB GPU VRAM Out-of-Memory"
+    p7_r_t.font.size = Pt(12)
+    p7_r_t.font.bold = True
+    p7_r_t.font.color.rgb = RGBColor(0xC5, 0x30, 0x30)
+    p7_r_d = tf7_r.add_paragraph()
+    p7_r_d.text = "• Simultaneous 12-layer backprop with L=256 and DFG attention tensors exhausted 4GB VRAM on RTX 3050.\n" \
+                  "• Solution: Decoupled into staged feature extraction; trained lightweight 4-Head GAT + MLP classifier head."
+    p7_r_d.font.size = Pt(10)
+    p7_r_d.font.color.rgb = DARK_TEXT
+    p7_r_d.space_before = Pt(4)
 
-    p7_r_title = tf7_r.paragraphs[0]
-    p7_r_title.text = "Problem 2: 4GB GPU VRAM Out-of-Memory"
-    p7_r_title.font.size = Pt(13)
-    p7_r_title.font.bold = True
-    p7_r_title.font.color.rgb = RGBColor(0xC5, 0x30, 0x30)
-
-    p2_lines = [
-        "Symptom: torch.cuda.OutOfMemoryError: Tried to allocate 512MiB on RTX 3050 (4GB total).",
-        "Root Cause: Full backpropagation through 12 Transformer layers with L=256 and DFG attention matrices exhausted 4GB VRAM.",
-        "Diagnostic: Memory profiler identified peak activation memory during backward pass.",
-        "Resolution: Optimized memory allocation by performing staged GraphCodeBERT feature extraction and training the custom Graph Attention Pooling layer with gradient clipping.",
-        "Result: Stable training convergence and 94.44% test accuracy achieved."
-    ]
-    for line in p2_lines:
-        p = tf7_r.add_paragraph()
-        p.text = f"• {line}"
-        p.font.size = Pt(10.5)
-        p.font.color.rgb = DARK_TEXT
-        p.space_before = Pt(6)
+    scr2 = "midterm/results/screenshot_error_cuda_oom.png"
+    if os.path.exists(scr2):
+        slide7.shapes.add_picture(scr2, Inches(6.8), Inches(3.9), Inches(5.6), Inches(3.1))
 
     # -------------------------------------------------------------
     # SLIDE 8: EXPERIMENTAL EVALUATION RESULTS
@@ -390,27 +339,28 @@ def create_deck():
     slide8 = prs.slides.add_slide(blank_slide_layout)
     add_header(slide8, "Experimental Evaluation & Benchmark Verification", "Lecture 7 — Analytics & Verification")
 
-    t_shape = slide8.shapes.add_table(rows=8, cols=4, left=Inches(0.8), top=Inches(1.8), width=Inches(7.2), height=Inches(4.8))
+    # Table on Left
+    t_shape = slide8.shapes.add_table(rows=8, cols=4, left=Inches(0.8), top=Inches(1.6), width=Inches(6.2), height=Inches(5.4))
     tbl = t_shape.table
 
-    r_headers = ["Metric", "Target Requirement", "Measured Result", "Status"]
+    r_headers = ["Metric", "Target", "Measured Result", "Status"]
     for i, h in enumerate(r_headers):
         cell = tbl.cell(0, i)
         cell.fill.solid()
         cell.fill.fore_color.rgb = NAVY
         p = cell.text_frame.paragraphs[0]
         p.text = h
-        p.font.size = Pt(10)
+        p.font.size = Pt(9.5)
         p.font.bold = True
         p.font.color.rgb = WHITE
 
     table_data = [
         ("Accuracy", ">= 93.0%", "94.44% (238/252)", "EXCEEDED"),
         ("Precision", "Baseline", "95.73%", "HIGH CERTAINTY"),
-        ("Recall (Sensitivity)", "Minimizing FN", "92.68% (114/123)", "ROBUST DETECTION"),
+        ("Recall (Sens.)", "Minimizing FN", "92.68% (114/123)", "ROBUST DETECTION"),
         ("Specificity", "Minimizing FP", "96.12% (124/129)", "LOW FALSE ALARMS"),
         ("F1-Score", "Harmonic Mean", "94.18%", "BALANCED QUALITY"),
-        ("ROC-AUC", "Discriminative Power", "0.9782", "OUTSTANDING"),
+        ("ROC-AUC", "Discrimination", "0.9782", "OUTSTANDING"),
         ("Confusion Matrix", "N = 252", "TN=124, FP=5, FN=9, TP=114", "VERIFIED")
     ]
     for row_idx, rvals in enumerate(table_data, start=1):
@@ -420,34 +370,43 @@ def create_deck():
             cell.fill.fore_color.rgb = RGBColor(0xEB, 0xF3, 0xFA) if row_idx == 1 else (RGBColor(0xF7, 0xFA, 0xFC) if row_idx % 2 == 1 else WHITE)
             p = cell.text_frame.paragraphs[0]
             p.text = val
-            p.font.size = Pt(9.5)
+            p.font.size = Pt(9.0)
             if col_idx in (0, 3):
                 p.font.bold = True
                 if col_idx == 3 and row_idx == 1:
                     p.font.color.rgb = SUCCESS_GREEN
 
-    tb8_r = slide8.shapes.add_textbox(Inches(8.3), Inches(1.8), Inches(4.2), Inches(4.8))
-    tf8_r = tb8_r.text_frame
-    tf8_r.word_wrap = True
+    # Figures on Right
+    cm_img = "midterm/results/confusion_matrix.png"
+    if os.path.exists(cm_img):
+        slide8.shapes.add_picture(cm_img, Inches(7.3), Inches(1.6), Inches(2.7), Inches(2.5))
 
-    p8_t = tf8_r.paragraphs[0]
-    p8_t.text = "Key Analytical Insights:"
-    p8_t.font.size = Pt(14)
+    roc_img = "midterm/results/roc_curve.png"
+    if os.path.exists(roc_img):
+        slide8.shapes.add_picture(roc_img, Inches(10.2), Inches(1.6), Inches(2.7), Inches(2.5))
+
+    # Analytical takeaways below figures
+    tb8_b = slide8.shapes.add_textbox(Inches(7.3), Inches(4.3), Inches(5.6), Inches(2.7))
+    tf8_b = tb8_b.text_frame
+    tf8_b.word_wrap = True
+    p8_t = tf8_b.paragraphs[0]
+    p8_t.text = "Key Analytical Findings:"
+    p8_t.font.size = Pt(12)
     p8_t.font.bold = True
     p8_t.font.color.rgb = NAVY
 
     insights = [
-        ("Threshold Exceeded", "GraphCodeBERT + Data Flow Classifier achieves 94.44% Accuracy, comfortably surpassing the syllabus requirement of >= 93%."),
-        ("Low False Negatives", "Recall reaches 92.68% (only 9 missed vulnerabilities out of 123), critical for production security."),
-        ("High Specificity", "Specificity of 96.12% (only 5 false positives) eliminates alert fatigue for software developers."),
-        ("ROC-AUC Calibration", "ROC-AUC of 0.9782 confirms exceptional probability calibration across diverse CWE vulnerability categories.")
+        "Accuracy (94.44%) comfortably surpasses the course target threshold of >= 93.0%.",
+        "Recall reaches 92.68% (only 9 missed vulnerabilities out of 123 in test set).",
+        "Specificity of 96.12% (only 5 false alarms) prevents developer alert fatigue.",
+        "ROC-AUC of 0.9782 demonstrates outstanding discriminatory power across CWEs."
     ]
-    for h, b in insights:
-        p = tf8_r.add_paragraph()
-        p.text = f"▶ {h}: {b}"
-        p.font.size = Pt(10)
+    for ins in insights:
+        p = tf8_b.add_paragraph()
+        p.text = f"• {ins}"
+        p.font.size = Pt(9.5)
         p.font.color.rgb = DARK_TEXT
-        p.space_before = Pt(8)
+        p.space_before = Pt(3)
 
     # -------------------------------------------------------------
     # SLIDE 9: STRATEGIC RECOMMENDATIONS & CONCLUSION

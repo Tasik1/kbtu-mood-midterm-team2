@@ -18,6 +18,7 @@ Thumbs.db
 ~$*.docx
 ~$*.pptx
 *.tmp
+*.zip
 
 # Checkpoints / Large intermediate model weights
 *.incomplete
